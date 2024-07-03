@@ -8,25 +8,38 @@ let gameboard = { grid: grid3x3, gameStart: false, gameEnd: false };
 
 const players = {
     player1: {
+        name: 'player 1',
         sign: 'X'
     },
     player2: {
+        name: 'player 2',
         sign: 'O'
     }
 }
 
-function game() {
+let currentPlayer = players.player1;
 
+document.querySelectorAll(".cell").forEach((element) => {
+    element.addEventListener('click', (e) => {
+        if (e.target.textContent != 'X' && e.target.textContent != 'O') {
+            e.target.textContent = currentPlayer.sign;
+            swapPlayer();
+        } else {
+            console.log('invalid move');
+        }
+    })
+});
+
+function game() {
     while (!gameboard.gameEnd) {
-        
+
         // input from player 1
+        
 
         // input from player 2
 
-        checkWinner()
 
-        // switch current player
-        
+        checkWinner();
     }
 }
 
@@ -58,3 +71,12 @@ function checkWinner() {
         gameboard.gameEnd = true;
     }
 }
+
+function swapPlayer() {
+    if (currentPlayer == players.player1)
+        currentPlayer = players.player2;
+    else 
+        currentPlayer = players.player1;
+}
+
+game();
