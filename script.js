@@ -4,10 +4,10 @@ let grid3x3 = [
     [ '', '', '']
 ];
 
-let gameboard = { grid: grid3x3, gameStart: false, gameEnd: false };
+let gameboard = { grid: grid3x3, gameEnd: false };
 let container = document.querySelector('.container');
 const winner = document.querySelector('.winner');
-const btn = document.querySelector('button');
+const btn = document.querySelector('.re-start');
 let count = 0;
 const players = {
     player1: {
@@ -21,9 +21,9 @@ const players = {
 }
 
 let currentPlayer = players.player1;
-currentPlaterStatus();
 
 function game() {
+    currentPlaterStatus();
     document.querySelectorAll(".cell").forEach((element) => {
         element.addEventListener('click', handle);
 
@@ -134,8 +134,11 @@ function currentPlaterStatus() {
     document.querySelector('.current-player').textContent = `Current Player: ${currentPlayer.name}`;
 }
 
-function showWinner() {
-    
-}
-
-game();
+document.querySelector('.start').addEventListener('click', (e) => {
+    let p1Name = prompt('Enter Player 1 name: ', 'player 1');
+    let p2Name = prompt('Enter Player 2 name: ', 'player 1');
+    players.player1.name = p1Name;
+    players.player2.name = p2Name;
+    game();
+    e.target.style.display = 'none';
+})

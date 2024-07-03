@@ -59,15 +59,19 @@
             border-radius: 5px;
             cursor: pointer;
             display: none;
+            margin: 5px;
         }
+
+        .start { display: block; }
     </style>
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
     <div class="game-status">
-        <p class="current-player">Current Player: </p>
+        <p class="current-player">Click On Start</p>
         <p class="winner"></p>
     </div>
+    <div class="btn"></div>
     <div class="container">
         <div class="cell c00"></div>
         <div class="cell c01"></div>
@@ -79,6 +83,10 @@
         <div class="cell c21"></div>
         <div class="cell c22"></div>
     </div>
-    <div class="btn"><button>Restart Game</button></div>
+    <div class="btn">
+        <button class="start">Start Game</button>
+        <button class="re-start">Restart Game</button>
+    </div>
+    <div class="btn"></div>
 </body>
 </html>
