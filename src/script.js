@@ -73,11 +73,46 @@ function togglePlayer() {
     }
 }
 
+function updateMatrix(cellName, symbol) {
+    switch (cellName) {
+        case "c00":
+            gameBoard[0][0] = symbol;
+            break;
+        case "c01":
+            gameBoard[0][1] = symbol;
+            break;
+        case "c02":
+            gameBoard[0][2] = symbol;
+            break;
+        case "c10":
+            gameBoard[1][0] = symbol;
+            break;
+        case "c11":
+            gameBoard[1][1] = symbol;
+            break;
+        case "c12":
+            gameBoard[1][2] = symbol;
+            break;
+        case "c20":
+            gameBoard[2][0] = symbol;
+            break;
+        case "c21":
+            gameBoard[2][1] = symbol;
+            break;
+        case "c22":
+            gameBoard[2][2] = symbol;
+            break;
+    }
+}
+
 document.querySelectorAll(".cell").forEach((item) => {
     item.addEventListener("click", (e) => {
         gameCount++;
         if (e.target.textContent === "") {
             e.target.textContent = currentPlayer.symbol;
+            const cellName = e.target.classList[1];
+            updateMatrix(cellName, currentPlayer.symbol);
+            console.log(gameBoard);
             togglePlayer();
         }
     });
