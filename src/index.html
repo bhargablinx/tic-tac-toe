@@ -7,7 +7,33 @@
         <link rel="stylesheet" href="output.css" />
         <title>Tic Tac Toe</title>
     </head>
-    <body>
-        <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <body class="bg-gray-900 text-blue-400">
+        <h1 class="text-3xl font-bold text-center m-3">Tic Tac Toe</h1>
+        <div class="flex justify-between h-[400px] m-14 mt-32">
+            <!-- ADMIN SCREEN -->
+            <div
+                class="admin-screen flex-1 ml-16 text-4xl/12 font-extrabold p-10"
+            >
+                <p>Let's Play the</p>
+                <p>Tic-Tac-Toe</p>
+                <p>Game!</p>
+                <button
+                    class="text-sm font-semibold mt-[50px] bg-blue-400 text-slate-950 p-3 rounded-2xl outline outline-offset-2 outline-blue-400 cursor-pointer hover:bg-blue-500"
+                >
+                    START GAME
+                </button>
+            </div>
+            <!-- GAME SCREEN -->
+            <div
+                class="game-screen flex-1 mr-56 p-10 flex flex-col items-center"
+            >
+                <div class="flex justify-center gap-10">
+                    <div class="border-b-2">Player X</div>
+                    <div class="border-b-2">Player O</div>
+                </div>
+                <!-- gameboard -->
+                <div class="border w-[300px] h-[300px] mt-5"></div>
+            </div>
+        </div>
     </body>
 </html>
