@@ -76,7 +76,9 @@ function togglePlayer() {
 document.querySelectorAll(".cell").forEach((item) => {
     item.addEventListener("click", (e) => {
         gameCount++;
-        e.target.textContent = currentPlayer.symbol;
-        togglePlayer();
+        if (e.target.textContent === "") {
+            e.target.textContent = currentPlayer.symbol;
+            togglePlayer();
+        }
     });
 });
