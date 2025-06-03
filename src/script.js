@@ -171,11 +171,13 @@ document.querySelectorAll(".cell").forEach((item) => {
             e.target.textContent = currentPlayer.symbol;
             const cellName = e.target.classList[1];
             updateMatrix(cellName, currentPlayer.symbol);
-            if (gameCount >= 5) {
+            if (gameCount >= 4) {
                 const winningSym = checkWinner();
                 verifyWinner(winningSym);
             }
-            if (gameCount === 9) checkTie();
+            if (gameCount === 9 && !player1.isWinner && !player2.isWinner) {
+                checkTie();
+            }
             togglePlayer();
         }
     });
@@ -210,4 +212,7 @@ restartBtn.addEventListener("click", () => {
         );
     document.querySelector(".player1Chance").textContent = `Player X`;
     document.querySelector(".player2Chance").classList.remove("hidden");
+
+    document.querySelector(".player1Chance").classList.remove("text-gray-700");
+    document.querySelector(".player2Chance").classList.add("text-gray-700");
 });
