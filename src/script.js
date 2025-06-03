@@ -16,7 +16,8 @@ const player2 = {
     isWinner: false,
 };
 
-const currentPlayer = player1;
+let currentPlayer = player1;
+let gameCount = 0;
 
 function checkWinner() {
     // Check all rows
@@ -57,3 +58,25 @@ function checkWinner() {
         return gameBoard[0][2];
     }
 }
+
+function togglePlayer() {
+    const player1Chance = document.querySelector(".player1Chance");
+    const player2Chance = document.querySelector(".player2Chance");
+    if (currentPlayer === player1) {
+        currentPlayer = player2;
+        player2Chance.classList.remove("text-gray-700");
+        player1Chance.classList.add("text-gray-700");
+    } else {
+        currentPlayer = player1;
+        player1Chance.classList.remove("text-gray-700");
+        player2Chance.classList.add("text-gray-700");
+    }
+}
+
+document.querySelectorAll(".cell").forEach((item) => {
+    item.addEventListener("click", (e) => {
+        gameCount++;
+        e.target.textContent = currentPlayer.symbol;
+        togglePlayer();
+    });
+});
