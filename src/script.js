@@ -105,6 +105,16 @@ function updateMatrix(cellName, symbol) {
     }
 }
 
+function verifyWinner(sym) {
+    if (sym === undefined) {
+        console.log("Game Continues! No winner till now");
+    } else if (sym === "X") {
+        console.log("Player 1 wins");
+    } else {
+        console.log("Player 2 wins");
+    }
+}
+
 document.querySelectorAll(".cell").forEach((item) => {
     item.addEventListener("click", (e) => {
         gameCount++;
@@ -112,7 +122,10 @@ document.querySelectorAll(".cell").forEach((item) => {
             e.target.textContent = currentPlayer.symbol;
             const cellName = e.target.classList[1];
             updateMatrix(cellName, currentPlayer.symbol);
-            console.log(gameBoard);
+            if (gameCount >= 5) {
+                const winningSym = checkWinner();
+                verifyWinner(winningSym);
+            }
             togglePlayer();
         }
     });
