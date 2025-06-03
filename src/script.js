@@ -110,8 +110,16 @@ function verifyWinner(sym) {
         console.log("Game Continues! No winner till now");
     } else if (sym === "X") {
         console.log("Player 1 wins");
+        player1.isWinner = true;
     } else {
         console.log("Player 2 wins");
+        player2.isWinner = true;
+    }
+}
+
+function checkTie() {
+    if (!player1.isWinner && !player2.isWinner) {
+        return console.log("Tie");
     }
 }
 
@@ -126,6 +134,7 @@ document.querySelectorAll(".cell").forEach((item) => {
                 const winningSym = checkWinner();
                 verifyWinner(winningSym);
             }
+            if (gameCount === 9) checkTie();
             togglePlayer();
         }
     });
