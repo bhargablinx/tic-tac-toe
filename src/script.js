@@ -18,7 +18,7 @@ const player2 = {
 
 let currentPlayer = player1;
 let gameCount = 0;
-let isGameOver = false;
+let isGameOver = true;
 
 function checkWinner() {
     // Check all rows
@@ -110,11 +110,11 @@ function verifyWinner(sym) {
     if (sym === undefined) {
         return console.log("Game Continues! No winner till now");
     } else if (sym === "X") {
-        console.log("Player 1 wins");
+        alert("Player 1 wins");
         player1.isWinner = true;
         isGameOver = true; // Freeze the board
     } else {
-        console.log("Player 2 wins");
+        alert("Player 2 wins");
         player2.isWinner = true;
         isGameOver = true; // Freeze the board
     }
@@ -142,4 +142,22 @@ document.querySelectorAll(".cell").forEach((item) => {
             togglePlayer();
         }
     });
+});
+
+const startBtn = document.querySelector(".start-btn");
+const restartBtn = document.querySelector(".restart-btn");
+startBtn.addEventListener("click", () => {
+    isGameOver = false;
+    restartBtn.classList.remove("hidden");
+    startBtn.classList.add("hidden");
+});
+
+restartBtn.addEventListener("click", () => {
+    gameBoard.forEach((row) => row.fill(""));
+    document
+        .querySelectorAll(".cell")
+        .forEach((cell) => (cell.textContent = ""));
+    currentPlayer = player1;
+    gameCount = 0;
+    isGameOver = false;
 });
