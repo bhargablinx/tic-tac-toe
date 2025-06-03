@@ -110,12 +110,12 @@ function verifyWinner(sym) {
     if (sym === undefined) {
         return console.log("Game Continues! No winner till now");
     } else if (sym === "X") {
-        alert("Player 1 wins");
+        displayWinner("Player 1");
         player1.isWinner = true;
         isGameOver = true; // Freeze the board
         freezeBoard();
     } else {
-        alert("Player 2 wins");
+        displayWinner("Player 2");
         player2.isWinner = true;
         isGameOver = true; // Freeze the board
         freezeBoard();
@@ -125,7 +125,7 @@ function verifyWinner(sym) {
 function checkTie() {
     if (!player1.isWinner && !player2.isWinner && gameCount === 9) {
         isGameOver = true;
-        alert("It's a Tie!");
+        displayTie();
         freezeBoard();
     }
 }
@@ -134,6 +134,20 @@ function freezeBoard() {
     document.querySelectorAll(".cell").forEach((cell) => {
         cell.classList.add("cursor-not-allowed");
     });
+}
+
+function displayWinner(winnerName) {
+    const container = document.querySelector(".display-winner");
+    container.innerHTML = "";
+    container.classList.add("text-2xl", "animate-bounce");
+    container.textContent = `${winnerName} Wins!`;
+}
+
+function displayTie() {
+    const container = document.querySelector(".display-winner");
+    container.innerHTML = "";
+    container.classList.add("text-2xl", "animate-bounce");
+    container.textContent = `It's a Tie!`;
 }
 
 document.querySelectorAll(".cell").forEach((item) => {
