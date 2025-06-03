@@ -137,17 +137,31 @@ function freezeBoard() {
 }
 
 function displayWinner(winnerName) {
-    const container = document.querySelector(".display-winner");
-    container.innerHTML = "";
-    container.classList.add("text-2xl", "animate-bounce");
-    container.textContent = `${winnerName} Wins!`;
+    document.querySelector(".player2Chance").classList.add("hidden");
+    document
+        .querySelector(".player1Chance")
+        .classList.add(
+            "text-2xl",
+            "animate-bounce",
+            "text-green-500",
+            "font-bold"
+        );
+    document.querySelector(
+        ".player1Chance"
+    ).textContent = `${winnerName} Wins!`;
 }
 
 function displayTie() {
-    const container = document.querySelector(".display-winner");
-    container.innerHTML = "";
-    container.classList.add("text-2xl", "animate-bounce");
-    container.textContent = `It's a Tie!`;
+    document.querySelector(".player2Chance").classList.add("hidden");
+    document
+        .querySelector(".player1Chance")
+        .classList.add(
+            "text-2xl",
+            "animate-bounce",
+            "text-green-500",
+            "font-bold"
+        );
+    document.querySelector(".player1Chance").textContent = `It's a Tie!`;
 }
 
 document.querySelectorAll(".cell").forEach((item) => {
@@ -185,4 +199,15 @@ restartBtn.addEventListener("click", () => {
     isGameOver = false;
     player1.isWinner = false;
     player2.isWinner = false;
+
+    document
+        .querySelector(".player1Chance")
+        .classList.remove(
+            "text-2xl",
+            "animate-bounce",
+            "text-green-500",
+            "font-bold"
+        );
+    document.querySelector(".player1Chance").textContent = `Player X`;
+    document.querySelector(".player2Chance").classList.remove("hidden");
 });
