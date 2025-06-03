@@ -113,18 +113,27 @@ function verifyWinner(sym) {
         alert("Player 1 wins");
         player1.isWinner = true;
         isGameOver = true; // Freeze the board
+        freezeBoard();
     } else {
         alert("Player 2 wins");
         player2.isWinner = true;
         isGameOver = true; // Freeze the board
+        freezeBoard();
     }
 }
 
 function checkTie() {
-    if (!player1.isWinner && !player2.isWinner) {
+    if (!player1.isWinner && !player2.isWinner && gameCount === 9) {
         isGameOver = true;
-        return console.log("Tie");
+        alert("It's a Tie!");
+        freezeBoard();
     }
+}
+
+function freezeBoard() {
+    document.querySelectorAll(".cell").forEach((cell) => {
+        cell.classList.add("cursor-not-allowed");
+    });
 }
 
 document.querySelectorAll(".cell").forEach((item) => {
@@ -160,4 +169,6 @@ restartBtn.addEventListener("click", () => {
     currentPlayer = player1;
     gameCount = 0;
     isGameOver = false;
+    player1.isWinner = false;
+    player2.isWinner = false;
 });

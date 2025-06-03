@@ -318,6 +318,9 @@
   .border-collapse {
     border-collapse: collapse;
   }
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
