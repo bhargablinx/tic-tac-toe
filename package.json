@@ -1,0 +1,24 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "![Tic-Tac-Toe](/tic-tac-toe.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhargablinx/tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhargablinx/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/bhargablinx/tic-tac-toe#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.8",
+    "tailwindcss": "^4.1.8"
+  }
+}
