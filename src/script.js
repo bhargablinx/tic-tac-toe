@@ -18,6 +18,7 @@ const player2 = {
 
 let currentPlayer = player1;
 let gameCount = 0;
+let isGameOver = false;
 
 function checkWinner() {
     // Check all rows
@@ -107,18 +108,21 @@ function updateMatrix(cellName, symbol) {
 
 function verifyWinner(sym) {
     if (sym === undefined) {
-        console.log("Game Continues! No winner till now");
+        return console.log("Game Continues! No winner till now");
     } else if (sym === "X") {
         console.log("Player 1 wins");
         player1.isWinner = true;
+        isGameOver = true; // Freeze the board
     } else {
         console.log("Player 2 wins");
         player2.isWinner = true;
+        isGameOver = true; // Freeze the board
     }
 }
 
 function checkTie() {
     if (!player1.isWinner && !player2.isWinner) {
+        isGameOver = true;
         return console.log("Tie");
     }
 }
@@ -126,7 +130,7 @@ function checkTie() {
 document.querySelectorAll(".cell").forEach((item) => {
     item.addEventListener("click", (e) => {
         gameCount++;
-        if (e.target.textContent === "") {
+        if (!isGameOver && e.target.textContent === "") {
             e.target.textContent = currentPlayer.symbol;
             const cellName = e.target.classList[1];
             updateMatrix(cellName, currentPlayer.symbol);
